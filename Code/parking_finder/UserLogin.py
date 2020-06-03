@@ -1,0 +1,17 @@
+import pymysql
+import cgi
+print("content-text:text/html\r\n\r\n")
+print("<html>")
+print("<body>")
+print("<form action=UserChkLogin.py>")
+print("<center>")
+print("<table border=1>")
+print("<caption><font size=7> User Login Form</font></caption>")
+print("<tr><td>User id</td><td><input type= text name=ueid></td></tr>")
+print("<tr><td>User Password</td><td><input type= password name=upass></td></tr>")
+print("<tr><td><input type=submit name=Login></td><td><input type=reset><br><a href=UserInterface.py>SignUp</a><br><a href=FPIUser.py>Forget Password</a></td></tr>")
+print("</table>")
+print("</center>")
+print("</form>")
+print("</body>")
+print("</html>")

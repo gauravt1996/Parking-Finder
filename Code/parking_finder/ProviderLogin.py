@@ -1,0 +1,17 @@
+import pymysql
+import cgi
+print("content-text:text/html\r\n\r\n")
+print("<html>")
+print("<body>")
+print("<form action=ProviderChkLogin.py>")
+print("<center>")
+print("<table border=1>")
+print("<caption><font size=7> Provider Login Form</font></caption>")
+print("<tr><td>Provider id</td><td><input type= text name=peid></td></tr>")
+print("<tr><td>Provider Password</td><td><input type= password name=ppass></td></tr>")
+print("<tr><td><input type=submit name=Login></td><td><input type=reset><a href=ProviderLoginInterface.py>SignUp</a><br><a href=FPIProvider.py>Forget Password</a></td></tr>")
+print("</table>")
+print("</center>")
+print("</form>")
+print("</body>")
+print("</html>")

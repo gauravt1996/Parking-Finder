@@ -1,0 +1,43 @@
+import pymysql
+import cgi
+conn=pymysql.connect(host='localhost',user='root',password='1234',db='parking_finder')
+a=conn.cursor()
+print("content-text:text/html\r\n\r\n")
+print("<html>")
+print("<body>")
+print("<center>")
+print("<form action=AreaUpDe1.py>")
+print("<table border=1>")
+reg=cgi.FieldStorage()
+aid=reg.getvalue('aid')
+sql="select * from areareg where aid="+str(aid)
+a.execute(sql)
+data=a.fetchall()
+for i in data:
+      aid=str(i[0])
+      cityid=str(i[1])
+      aname=str(i[2])
+      azip=str(i[3])
+print("<tr><td>City</td><td><select name=cityid>")
+sq="select * from cityreg where cityid="+str(cityid)
+display=a.execute(sq)
+data=a.fetchall()
+for i in data:
+      print("<option value="+str(i[0])+">"+str(i[2])+"</option>");
+conn.commit()
+sq="select * from cityreg where cityid<>"+str(cityid)
+display=a.execute(sq)
+data=a.fetchall()
+for i in data:
+      print("<option value="+str(i[0])+">"+str(i[2])+"</option>");
+print("</select></td></tr>")
+conn.commit()
+print("<tr><td>Area ID</td><td><input type=text name=aid value="+aid+" readonly=true></td></tr>")
+print("<tr><td>Area Name</td><td><input type=text name=aname value="+aname+"></td></tr>")
+print("<tr><td>Area Zip Code</td><td><input type=number name=azip value="+azip+"></td></tr>")
+print("<tr><td><input type=submit value=Update name=btn></td><td><input type=submit value=Delete name=btn></td></tr>")
+print("</table>")
+print("</form>")
+print("</center>")
+print("</body>")
+print("</html>")
